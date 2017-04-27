@@ -2,10 +2,12 @@
 import { Component } from '@angular/core';
 import { Flight } from '../entities/flight';
 import { Http, Headers, URLSearchParams } from '@angular/http';
+import { FlightService } from './flight.service';
 
 @Component({
   selector: 'flight-search',
-  templateUrl: './flight-search.component.html'
+  templateUrl: './flight-search.component.html',
+  providers: [FlightService]
 })
 export class FlightSearchComponent {
 
@@ -16,36 +18,21 @@ export class FlightSearchComponent {
 
   // private http: Http;
 
-  constructor(private http: Http) {
-    // this.http = http;
+  constructor(private flightService: FlightService) {
+    console.debug('ctor');
   }
 
   search(): void {
-
-    let url = 'http://www.angular.at/api/flight';
-
-    let headers = new Headers();
-    headers.set('Accept', 'application/json');
-
-    let search = new URLSearchParams();
-    search.set('from', this.from);
-    search.set('to', this.to);
-
-
-
-    this
-      .http
-      .get(url, { headers, search })
-      .map(resp => resp.json())
-      .subscribe(
-        (flights) => {
-          this.flights = flights;
-
-        },
-        (errResponse) => {
-          console.debug('Error', errResponse);
-        }
-      );
+    this.flightService
+        .find(this.from, this.to)
+        .subscribe(
+          (flights) => {
+            this.flights = flights;
+          },
+          (errResponse) => {
+            console.debug('Error', errResponse);
+          }
+        );
 
   }
 
