@@ -13,7 +13,9 @@ export class FlightService {
     console.debug('ctor');
   }
 
-  find(from: string, to: string): Observable<Flight[]> {
+  public flights: Flight[] = [];
+
+  find(from: string, to: string): void {
     let url = this.baseUrl + '/flight';
 
     let headers = new Headers();
@@ -23,10 +25,14 @@ export class FlightService {
     search.set('from', from);
     search.set('to', to);
 
-    return this
-            .http
-            .get(url, { headers, search })
-            .map(resp => resp.json());
+    this
+        .http
+        .get(url, { headers, search })
+        .map(resp => resp.json())
+        .subscribe(
+          flights => this.flights = flights,
+          err => console.error(err)
+        );
 
 
   }

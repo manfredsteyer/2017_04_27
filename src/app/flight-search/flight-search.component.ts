@@ -7,13 +7,20 @@ import { FlightService } from './flight.service';
 @Component({
   selector: 'flight-search',
   templateUrl: './flight-search.component.html',
-  providers: [FlightService]
+  providers: []
 })
 export class FlightSearchComponent {
 
   from: string;
   to: string;
-  flights: Array<Flight> = [];
+  // flights: Array<Flight> = [];
+
+  // TypeScript: let x = comp.flights;
+  // JAVA: let x = comp.getFlight();
+  get flights() {
+    return this.flightService.flights;
+  }
+
   selectedFlight: Flight;
 
   basket: any = {
@@ -29,16 +36,8 @@ export class FlightSearchComponent {
   }
 
   search(): void {
-    this.flightService
-        .find(this.from, this.to)
-        .subscribe(
-          (flights) => {
-            this.flights = flights;
-          },
-          (errResponse) => {
-            console.debug('Error', errResponse);
-          }
-        );
+    this.flightService.find(this.from, this.to);
+
 
   }
 

@@ -33,6 +33,7 @@ import { FlightEditComponent } from './flight-edit/flight-edit.component';
     PassengerSearchComponent
   ],
   providers: [
+    FlightService,
     { provide: BASE_URL, useValue: 'http://www.angular.at/api' }
   ],
   bootstrap: [AppComponent]
