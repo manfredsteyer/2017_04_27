@@ -14,10 +14,20 @@
   <button class="btn btn-default" (click)="search()">Search</button>
 </div>
 
-<table *ngIf="flights.length > 0" class="table table-striped">
+
+<div class="row">
+<div *ngFor="let f of flights" style="margin-bottom: 20px" class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+  <flight-card
+    [item]="f"
+    [(selected)]="basket[f.id]">
+<!-- (selectedChange)="basket[f.id] = $event" -->
+  </flight-card>
+</div>
+</div>
+
 <!--
-[ngClass]="{ 'active': f == selectedFlight }"
--->
+<table *ngIf="flights.length > 0" class="table table-striped">
+
   <tr *ngFor="let f of flights" [ngStyle]="{ 'background-color': (f == selectedFlight) ? 'orange': '' }">
     <td>{{f.id}}</td>
     <td>{{f.from | city:'short'}}</td>
@@ -26,8 +36,11 @@
     <td><a (click)="select(f)">Select</a></td>
   </tr>
 </table>
+-->
 
+<div class="row">
 <pre>Warenkorb
 ------------------
-{{selectedFlight | json}}
+{{basket | json}}
 </pre>
+</div>

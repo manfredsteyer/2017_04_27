@@ -10,6 +10,7 @@ import { BASE_URL } from './app.tokens';
 import { CityPipe } from './shared/pipe/city.pipe';
 import { TestComponent } from './test/test.component';
 import { TestPipe } from './test.pipe';
+import { FlightCardComponent } from './flight-search/flight-card.component';
 
 @NgModule({
   imports: [
@@ -20,9 +21,8 @@ import { TestPipe } from './test.pipe';
   declarations: [
     AppComponent,
     FlightSearchComponent,
-    CityPipe,
-    TestComponent,
-    TestPipe
+    FlightCardComponent,
+    CityPipe
   ],
   providers: [
     { provide: BASE_URL, useValue: 'http://www.angular.at/api' }
