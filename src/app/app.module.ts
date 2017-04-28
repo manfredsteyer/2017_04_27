@@ -11,18 +11,26 @@ import { CityPipe } from './shared/pipe/city.pipe';
 import { TestComponent } from './test/test.component';
 import { TestPipe } from './test.pipe';
 import { FlightCardComponent } from './flight-search/flight-card.component';
+import { AppRouterModule } from './app.routes';
+import { HomeComponent } from './home/home.component';
+import { PassengerSearchComponent } from './passenger-search/passenger-search.component';
+import { FlightEditComponent } from './flight-edit/flight-edit.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    AppRouterModule
   ],
   declarations: [
     AppComponent,
     FlightSearchComponent,
     FlightCardComponent,
-    CityPipe
+    FlightEditComponent,
+    CityPipe,
+    HomeComponent,
+    PassengerSearchComponent
   ],
   providers: [
     { provide: BASE_URL, useValue: 'http://www.angular.at/api' }
