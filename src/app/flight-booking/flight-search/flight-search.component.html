@@ -1,6 +1,14 @@
 <h2>Flight Search</h2>
 
-<form #f="ngForm">
+<form #f="ngForm" roundTrip>
+
+  <div *ngIf="!f?.valid">
+    {{ f?.errors | json}}
+  </div>
+  <div *ngIf="f?.hasError('roundTrip')">
+    No RoundTrips!
+  </div>
+
 <div class="form-group">
   <label>From</label>
   <input
@@ -8,7 +16,8 @@
     minlength="3"
     pattern="[A-Za-zöäüßÖÄÜ]*"
     name="from"
-    city="Basel,Frankfurt,Graz,Wien,Hamburg,Zürich,Berlin"
+    asyncCity
+    city="Basel,Frankfurt,Graz,Wien,Hamburg,Zürich,Berlin,Paris"
     [(ngModel)]="from"
     class="form-control">
 
@@ -18,7 +27,10 @@
     <div *ngIf="f?.controls?.from?.hasError('pattern')">Pattern...</div>
     <div *ngIf="f?.controls?.from?.hasError('city')">City...</div>
     <div><pre>{{f?.controls?.from?.errors | json}}</pre></div>
-    <hr>
+    <div *ngIf="f?.controls?.from?.pending">
+      <marquee direction="down">Validierung wird ausgeführt!</marquee>
+    </div>
+  <hr>
     <validation-errors [errors]="f?.controls?.from?.errors"></validation-errors>
 </div>
 
@@ -28,7 +40,7 @@
 </div>
 
 <div class="form-group">
-  <button class="btn btn-default" (click)="search()">Search</button>
+  <button class="btn btn-default" [disabled]="!f?.valid" (click)="search()">Search</button>
 </div>
 </form>
 
