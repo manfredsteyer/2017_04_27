@@ -7,6 +7,7 @@ import { FlightService } from './flight.service';
 @Component({
   selector: 'flight-search',
   templateUrl: './flight-search.component.html',
+  styleUrls: ['./flight-search.component.css'],
   providers: []
 })
 export class FlightSearchComponent {
