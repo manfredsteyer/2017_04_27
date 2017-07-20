@@ -18,6 +18,8 @@
     <div *ngIf="f?.controls?.from?.hasError('pattern')">Pattern...</div>
     <div *ngIf="f?.controls?.from?.hasError('city')">City...</div>
     <div><pre>{{f?.controls?.from?.errors | json}}</pre></div>
+    <hr>
+    <validation-errors [errors]="f?.controls?.from?.errors"></validation-errors>
 </div>
 
 <div class="form-group">

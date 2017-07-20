@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CityPipe } from './pipe/city.pipe';
 import { CityValidationDirective } from './validation/city-validation.directive';
+import { ValidationErrorsComponent } from './validation/validation-errors/validation-errors.component';
 
 @NgModule({
   imports: [
@@ -10,11 +11,13 @@ import { CityValidationDirective } from './validation/city-validation.directive'
   ],
   declarations: [
     CityPipe,
-    CityValidationDirective
+    CityValidationDirective,
+    ValidationErrorsComponent
   ],
   exports: [
     CityPipe,
-    CityValidationDirective
+    CityValidationDirective,
+    ValidationErrorsComponent
   ]
 })
 export class SharedModule {
