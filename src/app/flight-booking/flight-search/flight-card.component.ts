@@ -1,5 +1,5 @@
 
-import { Flight } from '../entities/flight';
+import { Flight } from '../../entities/flight';
 import { Input, Component, EventEmitter, Output, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 @Component({
