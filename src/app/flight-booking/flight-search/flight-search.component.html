@@ -8,6 +8,7 @@
     minlength="3"
     pattern="[A-Za-zöäüßÖÄÜ]*"
     name="from"
+    city="Basel,Frankfurt,Graz,Wien,Hamburg,Zürich,Berlin"
     [(ngModel)]="from"
     class="form-control">
 
@@ -15,6 +16,7 @@
     <div *ngIf="f?.controls?.from?.hasError('required')">Required ...</div>
     <div *ngIf="f?.controls?.from?.hasError('minlength')">Minlength ...</div>
     <div *ngIf="f?.controls?.from?.hasError('pattern')">Pattern...</div>
+    <div *ngIf="f?.controls?.from?.hasError('city')">City...</div>
     <div><pre>{{f?.controls?.from?.errors | json}}</pre></div>
 </div>
 
