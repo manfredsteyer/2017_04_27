@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Flight } from '../../entities/flight';
 import { Http, URLSearchParams, Headers } from '@angular/http';
 import { BASE_URL } from '../../app.tokens';
+import { publish } from 'rxjs/operator/publish';
 
 @Injectable()
 export class FlightService {
@@ -25,15 +26,14 @@ export class FlightService {
     search.set('from', from);
     search.set('to', to);
 
-    this
-        .http
-        .get(url, { headers, search })
-        .map(resp => resp.json())
-        .subscribe(
-          flights => this.flights = flights,
-          err => console.error(err)
-        );
-
+    let o = this
+            .http
+            .get(url, { headers, search })
+            .map(resp => resp.json())
+            .subscribe(
+              flights => this.flights = flights,
+              err => console.error(err)
+            );
 
   }
 

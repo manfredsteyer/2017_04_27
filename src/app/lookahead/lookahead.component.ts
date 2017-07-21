@@ -43,15 +43,12 @@ export class LookaheadComponent implements OnInit {
                             .do(v => this.loading = false);
     }
 
-    load(from: string)  {
+    load(from: string):Observable<Flight[]>  {
         let url = "http://www.angular.at/api/flight";
-
         let search = new URLSearchParams();
         search.set('from', from);
-
         let headers = new Headers();
         headers.set('Accept', 'application/json');
-
         return this
                 .http
                 .get(url, {search, headers})
