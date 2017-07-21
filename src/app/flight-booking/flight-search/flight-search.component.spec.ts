@@ -74,14 +74,21 @@ describe('FlightSearchComponent', () => {
   })
 
   it('should load flights w/ from and to', () => {
+
     let fixture = TestBed.createComponent(FlightSearchComponent);
     let comp = fixture.componentInstance;
+
+    let flightService = fixture.debugElement
+                                .injector.get(FlightService);
+
+    spyOn(flightService, 'find').and.callThrough();
 
     comp.from = 'Hamburg';
     comp.to = 'Graz'
     comp.search();
 
     expect(comp.flights.length).toBe(3);
+    expect(flightService.find).toHaveBeenCalled();
   })
 
 })

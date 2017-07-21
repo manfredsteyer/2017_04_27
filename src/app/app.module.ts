@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
@@ -16,18 +16,21 @@ import { HomeComponent } from './home/home.component';
 import { PassengerSearchComponent } from './flight-booking/passenger-search/passenger-search.component';
 import { FlightEditComponent } from './flight-booking/flight-edit/flight-edit.component';
 import { FlightBookingModule } from './flight-booking/flight-booking.module';
+import { LookaheadComponent } from './lookahead/lookahead.component';
 
 @NgModule({
   imports: [
     BrowserModule,
     HttpModule,
     AppRouterModule,
+    ReactiveFormsModule,
     FlightBookingModule
   ],
   declarations: [
     // Shell
     AppComponent,
     HomeComponent,
+    LookaheadComponent
   ],
   providers: [
     { provide: BASE_URL, useValue: 'http://www.angular.at/api' }
