@@ -1,4 +1,27 @@
 <h1>Flight Edit</h1>
-<p>Id: {{id}}</p>
-<p>ShowDetails: {{showDetails}}</p>
 
+<form [formGroup]="form">
+
+  <div>{{form.errors | json }}</div>
+
+  <div class="control-group">
+    <label>Id</label>
+    <input formControlName="id" class="form-control">
+  </div>
+  <div class="control-group">
+    <label>From</label>
+    <input formControlName="from" class="form-control">
+    <validation-errors [errors]="form.controls.from.errors"></validation-errors>
+  </div>
+  <div class="control-group">
+    <label>To</label>
+    <input formControlName="to" class="form-control">
+  </div>
+
+  <div class="control-group">
+    <label>Date</label>
+    <input formControlName="date" class="form-control">
+  </div>
+
+
+</form>
