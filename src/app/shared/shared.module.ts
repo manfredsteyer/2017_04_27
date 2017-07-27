@@ -6,6 +6,8 @@ import { CityValidationDirective } from './validation/city-validation.directive'
 import { ValidationErrorsComponent } from './validation/validation-errors/validation-errors.component';
 import { RoundTripValidationDirective } from './validation/round-trip-validation.directive';
 import { AsyncCityValidationDirective } from './validation/async-city-validation.directive';
+import { TestComponent } from "app/shared/test.component";
+import { FlightEvents } from './events/flight.events';
 
 @NgModule({
   imports: [
@@ -16,7 +18,11 @@ import { AsyncCityValidationDirective } from './validation/async-city-validation
     CityValidationDirective,
     ValidationErrorsComponent,
     RoundTripValidationDirective,
-    AsyncCityValidationDirective
+    AsyncCityValidationDirective,
+    TestComponent
+  ],
+  providers: [
+    FlightEvents
   ],
   exports: [
     CityPipe,

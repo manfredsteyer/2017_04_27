@@ -4,12 +4,18 @@
     <li><a [routerLink]="['/flight-search']">Flight Search</a></li>
     <li><a [routerLink]="['/passenger-search']">Passenger Search</a></li>
     <li><a [routerLink]="['/lookahead']">Look Ahead</a></li>
+    <li><a (click)="toggleShowBasket()">Toggle Basket</a></li>
 
   </ul>
 </nav>
 
 <div class="container">
 
-  <router-outlet></router-outlet>
+  <div class="col-sm-9">
+    <router-outlet></router-outlet>
+  </div>
+  <div class="col-sm-3" *ngIf="showBasket">
+    <basket></basket>
+  </div>
 
 </div>

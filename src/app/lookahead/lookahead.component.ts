@@ -24,12 +24,12 @@ export class LookaheadComponent implements OnInit {
 
     control: FormControl;
     flights$: Observable<Flight[]>;
-
-
-
-
-
     loading: boolean = false;
+
+
+
+
+
 
     ngOnInit() {
         this.control = new FormControl();

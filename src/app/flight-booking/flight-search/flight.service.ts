@@ -4,12 +4,16 @@ import { Flight } from '../../entities/flight';
 import { Http, URLSearchParams, Headers } from '@angular/http';
 import { BASE_URL } from '../../app.tokens';
 import { publish } from 'rxjs/operator/publish';
+import { AppState } from '../../model/app.state';
+import { Store } from '@ngrx/store';
+import { FlightsLoadedAction } from '../../model/flights/flights.actions';
 
 @Injectable()
 export class FlightService {
 
   constructor(
     private http: Http,
+    private store: Store<AppState>,
     @Inject(BASE_URL) private baseUrl: string) {
     console.debug('ctor');
   }
@@ -31,7 +35,9 @@ export class FlightService {
             .get(url, { headers, search })
             .map(resp => resp.json())
             .subscribe(
-              flights => this.flights = flights,
+              flights => {
+                this.store.dispatch(new FlightsLoadedAction(flights))
+              },
               err => console.error(err)
             );
 

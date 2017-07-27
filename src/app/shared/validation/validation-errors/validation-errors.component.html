@@ -1,11 +1,11 @@
-<div *ngIf="errors && errors.required">
+<div *ngIf="errors && errors['required']">
   This field is required
 </div>
 
-<div *ngIf="errors && errors.minlength">
+<div *ngIf="errors && errors['minlength']">
   This field needs to have at least {{ errors.minlength.requiredLength }} characters
 </div>
 
-<div *ngIf="errors && errors.city">
+<div *ngIf="errors && errors['city']">
   This city is not allowed.
 </div>

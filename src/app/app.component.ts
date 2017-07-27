@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Hallo Welt!!';
+
+  showBasket: boolean = true;
+
+  toggleShowBasket(): void {
+    this.showBasket = !this.showBasket;
+  }
 }

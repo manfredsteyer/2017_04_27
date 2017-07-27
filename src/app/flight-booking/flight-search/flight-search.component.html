@@ -45,13 +45,29 @@
 </form>
 
 <div class="row">
-<div *ngFor="let f of flights" style="margin-bottom: 20px" class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+<div *ngFor="let f of flights$ | async" style="margin-bottom: 20px" class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+
   <flight-card
     [item]="f"
-    [(selected)]="basket[f.id]">
-<!-- (selectedChange)="basket[f.id] = $event" -->
+    [selected]="basket[f.id]"
+    (selectedChange)="select(f, $event)">
+
+    <!-- [(selected)]="basket[f.id]" -->
+    <!-- (selectedChange)="basket[f.id] = $event" -->
   </flight-card>
+
+  <div class="card">
+    Delayed: {{f.delayed}} |
+    <a (click)="changeState(f, true)">Delayed</a> |
+    <a (click)="changeState(f, false)">In Time</a>
+  </div>
+
+
 </div>
+</div>
+
+<div class="row card">
+  <pre>{{ statistic$ | async | json }}</pre>
 </div>
 
 <!--
