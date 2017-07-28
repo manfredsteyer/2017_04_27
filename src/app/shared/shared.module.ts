@@ -10,6 +10,7 @@ import { TestComponent } from "app/shared/test.component";
 import { FlightEvents } from './events/flight.events';
 import { AuthGuard } from './auth/auth.guard';
 import { ExitGuard } from './exit/exit.guard';
+import { AuthService } from './auth/auth.service';
 
 @NgModule({
   imports: [
