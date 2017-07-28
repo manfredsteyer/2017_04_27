@@ -11,6 +11,7 @@ import { FlightService } from './flight-search/flight.service';
 import { RouterModule } from '@angular/router';
 import { FLIGHT_BOOKING_ROUTES } from './flight-booking.routes';
 import { FlightsEffects } from '../model/flights/flights.effects';
+import { FlightBookingComponent } from './flight-booking.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -26,10 +27,12 @@ import { FlightsEffects } from '../model/flights/flights.effects';
     FlightCardComponent,
     FlightEditComponent,
 
+    FlightBookingComponent
   ],
   providers: [
     FlightService,
-    FlightsEffects
+    FlightsEffects,
+
   ],
   exports: [
     FlightSearchComponent,

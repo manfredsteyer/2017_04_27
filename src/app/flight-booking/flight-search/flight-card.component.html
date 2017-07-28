@@ -9,6 +9,6 @@
     <button class="btn btn-default" *ngIf="!selected" (click)="select()">Auswählen</button>
     <button class="btn btn-default" *ngIf="selected" (click)="deselect()">Entfernen</button>
 
-    <a [routerLink]="['/flight-edit', item.id, {showDetails: true}]" [queryParams]="{x:1}" class="btn btn-default">Edit</a>
+    <a [routerLink]="['../flight-edit', item.id, {showDetails: true}]" [queryParams]="{x:1}" class="btn btn-default">Edit</a>
   </p>
 </div>

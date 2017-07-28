@@ -36,9 +36,15 @@ function calcStatistics(payload: Flight[]): FlightsStatistics {
 function flightStateChanged(
             state: FlightState, action: FlightStateChangedAction): FlightState {
 
+
+
   let newFlight = action.payload;
   let oldFlights = state.flights;
   let index = oldFlights.findIndex(f => f.id === newFlight.id);
+
+  // This would be bad (mutables vs immutables)
+  // oldFlights[index].delayed = action.payload.delayed;
+  // if (1==1) return state;
 
   let newFlights: Flight[] = [
     ...oldFlights.slice(0, index),
