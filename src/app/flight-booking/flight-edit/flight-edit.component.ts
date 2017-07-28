@@ -4,11 +4,16 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { FlightService } from '../flight-search/flight.service';
 import { CityValidators } from '../../shared/validation/city.validators';
+import { CanExit } from '../../shared/exit/can-exit';
+import { Observable } from 'rxjs/Observable';
+import { Observer } from 'rxjs/Observer';
 @Component({
   selector: 'flight-edit',
   templateUrl: './flight-edit.component.html'
 })
-export class FlightEditComponent implements  OnInit{
+export class FlightEditComponent implements OnInit, CanExit {
+
+
 
   id: string;
   showDetails: string;
@@ -48,6 +53,28 @@ export class FlightEditComponent implements  OnInit{
       console.debug('from changed', changes);
     })
 
+  }
+
+
+  exitWarning = {
+    show: false,
+    sender: null
+  }
+
+  decide(decision: boolean): void {
+    this.exitWarning.show = false;
+    this.exitWarning.sender.next(decision);
+    this.exitWarning.sender.complete();
+  }
+
+  canExit(): any {
+    if (!this.form.dirty) return true;
+
+    this.exitWarning.show = true;
+
+    return Observable.create((sender: Observer<boolean>) => {
+      this.exitWarning.sender = sender;
+    })
   }
 
   ngOnInit(): void {

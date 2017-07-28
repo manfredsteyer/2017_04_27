@@ -8,6 +8,8 @@ import { RoundTripValidationDirective } from './validation/round-trip-validation
 import { AsyncCityValidationDirective } from './validation/async-city-validation.directive';
 import { TestComponent } from "app/shared/test.component";
 import { FlightEvents } from './events/flight.events';
+import { AuthGuard } from './auth/auth.guard';
+import { ExitGuard } from './exit/exit.guard';
 
 @NgModule({
   imports: [
@@ -22,7 +24,9 @@ import { FlightEvents } from './events/flight.events';
     TestComponent
   ],
   providers: [
-    FlightEvents
+    FlightEvents,
+    AuthGuard,
+    ExitGuard
   ],
   exports: [
     CityPipe,
