@@ -4,7 +4,7 @@
 
   <div>{{form.errors | json }}</div>
 
-  <div *ngIf="exitWarning.show" class="alert alert-warning">
+  <div style="position:relative; z-index: 100" *ngIf="exitWarning.show" class="alert alert-warning">
     <div>
       Daten wurden nicht gespeichert! Trotzdem Maske verlassen?
     </div>

@@ -5,6 +5,7 @@ import { PassengerSearchComponent } from './passenger-search/passenger-search.co
 import { FlightBookingComponent } from './flight-booking.component';
 import { AuthGuard } from '../shared/auth/auth.guard';
 import { ExitGuard } from '../shared/exit/exit.guard';
+import { FlightEditResolver } from './flight-edit/flight-edit.resolver';
 
 export const FLIGHT_BOOKING_ROUTES: Routes = [
   {
@@ -19,7 +20,10 @@ export const FLIGHT_BOOKING_ROUTES: Routes = [
       {
         path: 'flight-edit/:id',
         component: FlightEditComponent,
-        canDeactivate: [ExitGuard]
+        canDeactivate: [ExitGuard],
+        resolve: {
+          flight: FlightEditResolver
+        }
       },
       {
         path: 'passenger-search',

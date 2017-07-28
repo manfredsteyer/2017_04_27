@@ -26,4 +26,11 @@
     <router-outlet name="aux"></router-outlet>
   </div>
 
+  <div *ngIf="showLoadingIndicator" style="position: fixed; left:0px; top:0px; width: 100%; height:100%; background-color: darkgray; opacity: 0.5">
+    <div style="width: 100%; height: 100%; display:flex; align-items: center; justify-content: center">
+      <strong>Loading ...</strong>
+    </div>
+
+  </div>
+
 </div>

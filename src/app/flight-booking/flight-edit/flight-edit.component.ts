@@ -90,8 +90,10 @@ export class FlightEditComponent implements OnInit, CanExit {
     );
     */
     this.route
-        .params
-        .switchMap(p => this.flightService.findById(p['id']))
+        // .params
+        // .switchMap(p => this.flightService.findById(p['id']))
+      .data
+      .map(data => data['flight'])
         .subscribe(
           f => this.form.patchValue(f),
           err => console.error(err)
