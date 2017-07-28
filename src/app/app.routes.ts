@@ -4,6 +4,7 @@ import { FlightSearchComponent } from './flight-booking/flight-search/flight-sea
 import { PassengerSearchComponent } from './flight-booking/passenger-search/passenger-search.component';
 import { FlightEditComponent } from './flight-booking/flight-edit/flight-edit.component';
 import { LookaheadComponent } from './lookahead/lookahead.component';
+import { BasketComponent } from './basket/basket.component';
 
 const APP_ROUTES: Routes = [
   {
@@ -18,6 +19,11 @@ const APP_ROUTES: Routes = [
   {
     path: 'lookahead',
     component: LookaheadComponent
+  },
+  {
+    path: 'basket',
+    component: BasketComponent,
+    outlet: 'aux'
   },
   {
     path: '**',

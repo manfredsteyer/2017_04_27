@@ -8,8 +8,12 @@
     <li><a [routerLink]="['/passenger-search']">Passenger Search</a></li>
     -->
     <li><a [routerLink]="['/lookahead']">Look Ahead</a></li>
+    <!--
     <li><a (click)="toggleShowBasket()">Toggle Basket</a></li>
+    -->
 
+    <li><a [routerLink]="[{outlets: { aux: 'basket'}}]">Show Basket</a></li>
+    <li><a [routerLink]="[{outlets: { aux: null}}]">Hide Basket</a></li>
   </ul>
 </nav>
 
@@ -19,7 +23,7 @@
     <router-outlet></router-outlet>
   </div>
   <div class="col-sm-3" *ngIf="showBasket">
-    <basket></basket>
+    <router-outlet name="aux"></router-outlet>
   </div>
 
 </div>
