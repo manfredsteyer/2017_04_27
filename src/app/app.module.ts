@@ -20,6 +20,8 @@ import { StoreModule } from '@ngrx/store';
 import { appReducerMap } from './model/app.reducer';
 import { initAppState } from './model/app.state';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+import { FlightsEffects } from './model/flights/flights.effects';
 
 @NgModule({
   imports: [
@@ -31,7 +33,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     StoreModule.forRoot(appReducerMap, {
       initialState: initAppState
     }),
-    StoreDevtoolsModule.instrument()
+    StoreDevtoolsModule.instrument(),
+    EffectsModule.forRoot([FlightsEffects])
   ],
   declarations: [
     // Shell

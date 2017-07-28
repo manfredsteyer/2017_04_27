@@ -8,7 +8,7 @@ import { AppState } from '../../model/app.state';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import { FlightsStatistics } from '../../model/flights/flights.state';
-import { FlightStateChangedAction } from '../../model/flights/flights.actions';
+import { FlightLoadAction, FlightStateChangedAction } from '../../model/flights/flights.actions';
 
 @Component({
   selector: 'flight-search',
@@ -63,8 +63,10 @@ export class FlightSearchComponent implements OnInit {
 
     if (!this.from || !this.to) return;
 
-    this.flightService.find(this.from, this.to);
-
+    // this.flightService.find(this.from, this.to);
+    this.store.dispatch(
+      new FlightLoadAction(
+        {from: this.from, to: this.to}));
 
   }
 

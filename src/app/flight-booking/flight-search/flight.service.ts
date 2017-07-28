@@ -20,7 +20,7 @@ export class FlightService {
 
   public flights: Flight[] = [];
 
-  find(from: string, to: string): void {
+  find(from: string, to: string): Observable<Flight[]> {
     let url = this.baseUrl + '/flight';
 
     let headers = new Headers();
@@ -30,17 +30,18 @@ export class FlightService {
     search.set('from', from);
     search.set('to', to);
 
-    let o = this
+    return this
             .http
             .get(url, { headers, search })
-            .map(resp => resp.json())
+            .map(resp => resp.json());
+      /*
             .subscribe(
               flights => {
                 this.store.dispatch(new FlightsLoadedAction(flights))
               },
               err => console.error(err)
             );
-
+      */
   }
 
   findObservable(from: string, to: string): Observable<Flight[]> {
